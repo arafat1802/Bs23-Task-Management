@@ -11,7 +11,7 @@ public class User {
 
     @Id
     @Column(name = "user_name", length = 255)
-    private String userName;
+        private String userName;
 
     @Column(name = "email", length = 255)
     private String email;
