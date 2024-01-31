@@ -6,17 +6,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "userDetails")
+@Table(name = "user_details")
 public class User {
 
     @Id
-    @Column(name = "userName", length = 255)
+    @Column(name = "user_name", length = 255)
     private String userName;
 
-    @Column(name = "Email", length = 255)
+    @Column(name = "email", length = 255)
     private String email;
 
-    @Column(name = "Password", length = 255)
+    @Column(name = "password", length = 255)
     private String password;
 
     public User(String userName, String email, String password) {
