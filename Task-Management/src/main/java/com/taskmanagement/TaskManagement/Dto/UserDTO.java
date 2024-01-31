@@ -3,6 +3,7 @@ package com.taskmanagement.TaskManagement.Dto;
 import jakarta.persistence.Column;
 
 public class UserDTO {
+
     private String userName;
     private String email;
     private String password;

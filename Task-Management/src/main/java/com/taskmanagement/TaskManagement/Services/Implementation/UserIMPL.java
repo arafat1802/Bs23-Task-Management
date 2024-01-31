@@ -28,7 +28,6 @@ public class UserIMPL implements UserService {
                 //userDTO.getPassword()
                 this.passwordEncoder.encode(userDTO.getPassword())
         );
-        //return "fuck you";
         userRepo.save(user);
         return user.getUserName();
 
@@ -37,23 +36,25 @@ public class UserIMPL implements UserService {
     @Override
     public LoginResponse loginUser(LoginDTO loginDTO) {
         String msg = "";
-        User employee1 = userRepo.findByEmail(loginDTO.getEmail());
-        if (employee1 != null) {
+        User user1 = userRepo.findByEmail(loginDTO.getEmail());
+        if (user1 != null) {
             String password = loginDTO.getPassword();
-            String encodedPassword = employee1.getPassword();
+            String encodedPassword = user1.getPassword();
             Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
             if (isPwdRight) {
                 Optional<User> employee = userRepo.findOneByEmailAndPassword(loginDTO.getEmail(), encodedPassword);
                 if (employee.isPresent()) {
+                    // login success we can do create crud operations
+
                     return new LoginResponse("Login Success", true);
+                    } else {
+                        return new LoginResponse("Login Failed", false);
+                    }
                 } else {
-                    return new LoginResponse("Login Failed", false);
+                    return new LoginResponse("password Not Match", false);
                 }
-            } else {
-                return new LoginResponse("password Not Match", false);
+            }else {
+                return new LoginResponse("Email not exits", false);
             }
-        }else {
-            return new LoginResponse("Email not exits", false);
-        }
     }
 }
