@@ -1,8 +1,10 @@
 package com.taskmanagement.TaskManagement.UserController;
 
 import com.taskmanagement.TaskManagement.Dto.LoginDTO;
+import com.taskmanagement.TaskManagement.Dto.TaskDTO;
 import com.taskmanagement.TaskManagement.Dto.UserDTO;
 import com.taskmanagement.TaskManagement.Services.UserService;
+import com.taskmanagement.TaskManagement.TaskTable.AddTable;
 import com.taskmanagement.TaskManagement.response.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,12 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/user")
+@RequestMapping("api/")
 public class UserController {
 
     @Autowired
     private UserService userService;
-    @PostMapping(path = "/save")
+
+    @PostMapping(path = "/register")
     public String saveEmployee(@RequestBody UserDTO userDTO)
     {
         //return "hello";
@@ -29,5 +32,11 @@ public class UserController {
         LoginResponse loginMessage = userService.loginUser(loginDTO);
         return ResponseEntity.ok(loginMessage);
     }
-
+    private AddTable addTable;
+    @PostMapping(path = "/task")
+    public String addTable(@RequestBody TaskDTO taskDTO){
+        //return "xxx";
+        String table = addTable.addTask(taskDTO);
+        return table;
+    }
 }

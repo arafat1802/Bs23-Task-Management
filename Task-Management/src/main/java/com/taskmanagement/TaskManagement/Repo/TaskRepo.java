@@ -11,5 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 @EnableJpaRepositories
 public interface TaskRepo extends JpaRepository<TaskTable, String> {
-
+    @Override
+    void flush();
 }
