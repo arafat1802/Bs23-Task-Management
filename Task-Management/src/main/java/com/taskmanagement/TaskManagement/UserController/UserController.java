@@ -8,7 +8,6 @@ import com.taskmanagement.TaskManagement.TaskTable.AddTable;
 import com.taskmanagement.TaskManagement.response.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,6 +31,8 @@ public class UserController {
         LoginResponse loginMessage = userService.loginUser(loginDTO);
         return ResponseEntity.ok(loginMessage);
     }
+
+    //need to add session before accessing the task
     private AddTable addTable;
     @PostMapping(path = "/task")
     public String addTable(@RequestBody TaskDTO taskDTO){
