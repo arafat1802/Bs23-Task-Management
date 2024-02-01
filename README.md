@@ -12,8 +12,23 @@ Using mySQL workbech for mySQL
 <H3>for Registering a new user</H3>
 http://{servername}:{port)/api/register
 
+<h4>jason format</h4>
+
+{
+    "user_name" : "sakib",
+    "email" : "sakib@gmail.com",
+    "password" : "eeeeeee"
+}
+
 <h3>For Login as a new user</h3>
 http://{servername}:{port)/api/login
+
+<h4>jason format</h4>
+
+{
+    "email" : "sakib@gmail.com",
+    "password" : "eeeeeee"
+}
 
 Here the defult port is 8080
 
